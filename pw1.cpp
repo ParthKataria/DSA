@@ -138,6 +138,9 @@ vector<int> majorityElement(vector<int>& nums) {
         return v;
     }
 // https://leetcode.com/problems/rotate-array/     Require better
+// Reverse(a,a+n-k)
+// Reverse(a+n-k+1, a+n)
+// Reverse(a,a+n)
 void rotate(vector<int>& nums, int k) {
         int mod=1e8,n=nums.size();
         vector<int>v(n);
