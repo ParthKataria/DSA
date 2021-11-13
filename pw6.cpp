@@ -169,3 +169,24 @@ bool checkSubarraySum(vector<int>&v, int k) {
         }    
         return ans>cnt;
     }
+// https://practice.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1#
+int lenOfLongSubarr(int v[],  int n, int k) 
+    { 
+        int ans=0;
+        unordered_map<int,int>mp;
+        mp[v[0]]=0;
+        if(v[0]==k)
+            ans=1;
+        for(int i=1;i<n;i++)
+        {
+            v[i]+=v[i-1];
+            if(v[i]==k)
+                ans=i+1;  
+            else
+                if(mp.find(v[i]-k)!=mp.end())
+                    ans=max(ans,i-mp[v[i]-k]);
+            if(mp.find(v[i])==mp.end())
+                mp[v[i]]=i;
+        }
+        return ans;
+    } 
